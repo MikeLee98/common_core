@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_utils.c                                        :+:      :+:    :+:   */
+/*   built_ins.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/21 22:19:04 by mario             #+#    #+#             */
-/*   Updated: 2025/11/24 15:40:44 by marioro2         ###   ########.fr       */
+/*   Created: 2025/11/24 14:40:14 by marioro2          #+#    #+#             */
+/*   Updated: 2025/11/24 15:52:44 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_env   *env_find(t_env *env, char *key)
+void	ft_env(t_env *env)
 {
-    while (env)
-    {
-        if (ft_strncmp(env->key, key, ft_strlen(env->key) + 1) == 0)
-            return (env);
-        env = env->next;
-    }
-    return (NULL);
-}
+	t_env	*tmp;
 
-char    *env_get_value(t_env *env, char *key)
-{
-    t_env *node;
-
-    node = env_find(env, key);
-    if (node)
-        return (node->value);
-    return (NULL);
+	tmp = env;
+	while (tmp)
+	{
+		if (tmp->value)
+			ft_printf("%s=%s\n", tmp->key, tmp->value);
+		tmp = tmp->next;
+	}
 }

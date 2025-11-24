@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   env_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:50:46 by mario             #+#    #+#             */
-/*   Updated: 2025/11/24 12:35:00 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/24 15:40:37 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "../minishell.h"
 
 int env_update(t_env *env, char *key, char *new_value)
 {
