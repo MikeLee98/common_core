@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 21:50:46 by mario             #+#    #+#             */
-/*   Updated: 2025/11/22 06:24:28 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/24 12:35:00 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int env_update(t_env *env, char *key, char *new_value)
     return (1);
 }
 
-void    env_add_var(t_env **env, char *key, char *value)
+static void    env_add_var(t_env **env, char *key, char *value)
 {
     t_env   *new;
 
@@ -52,7 +52,7 @@ void    env_unset(t_env **env, char *key)
     prev = NULL;
     while (tmp)
     {
-        if (ft_strcmp(tmp->key, key) == 0)
+        if (ft_strncmp(tmp->key, key, ft_strlen(tmp->key) + 1) == 0)
         {
             if (prev)
                 prev->next = tmp->next;

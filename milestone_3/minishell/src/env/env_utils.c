@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 22:19:04 by mario             #+#    #+#             */
-/*   Updated: 2025/11/21 22:19:12 by mario            ###   ########.fr       */
+/*   Updated: 2025/11/24 12:35:29 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_env   *env_find(t_env *env, char *key)
 {
     while (env)
     {
-        if (ft_strcmp(env->key, key) == 0)
+        if (ft_strncmp(env->key, key, ft_strlen(env->key) + 1) == 0)
             return (env);
         env = env->next;
     }
