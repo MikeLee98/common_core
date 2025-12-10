@@ -1,31 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   built_ins.c                                        :+:      :+:    :+:   */
+/*   built_ins_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 14:40:14 by marioro2          #+#    #+#             */
-/*   Updated: 2025/11/25 12:12:40 by mario            ###   ########.fr       */
+/*   Created: 2025/11/25 12:16:26 by mario             #+#    #+#             */
+/*   Updated: 2025/11/25 12:16:45 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	export(t_env *env)
-{
-	
-}
-
-void	ft_env(t_env *env)
-{
-	t_env	*tmp;
-
-	tmp = env;
-	while (tmp)
-	{
-		if (tmp->value)
-			ft_printf("%s=%s\n", tmp->key, tmp->value);
-		tmp = tmp->next;
-	}
-}
