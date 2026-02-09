@@ -1,5 +1,3 @@
-
-
 #include "get_next_line.h"
 
 char *ft_strchr(char *s, int c)
@@ -98,7 +96,6 @@ char *get_next_line(int fd)
 			return NULL;
 		chunk[read_ret] = '\0';
 	}
-
 	char *tmp = ft_strchr(chunk, '\n');
 	while (!tmp)
 	{
@@ -107,6 +104,7 @@ char *get_next_line(int fd)
 		int read_ret = read(fd, chunk, BUFFER_SIZE);
 		if (read_ret <= 0)
 		{
+			chunk[0] = '\0';
 			if (ret && *ret)
 				return ret;
 			free (ret);

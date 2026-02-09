@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 13:49:51 by mario             #+#    #+#             */
-/*   Updated: 2025/05/26 17:32:05 by marioro2         ###   ########.fr       */
+/*   Updated: 2026/02/07 20:55:40 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ char	*get_next_line(int fd)
 // 	char	*line;
 
 // 	line = NULL;
-// 	line = get_next_line(fd);
 // 	printf("%s", line);
 // 	free(line);
 // 	// while ((line = get_next_line(fd)))
