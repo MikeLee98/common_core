@@ -72,7 +72,7 @@ void *ft_memmove(void *dest, const void *src, size_t n)
 			i++;
 		}
 	}
-	else // Copy backwards
+	else
 	{
 		size_t i = n;
 		while (i > 0)

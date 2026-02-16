@@ -33,6 +33,8 @@ int main (int ac, char **av)
     int i = 0;
     char *tmp = NULL;
 
+	if (ac != 2 || av[1][0] == '\0')
+    	return (1);
     if (ac == 2)
     {
         while ((counter = read (0, buffer, 999)) != 0)
@@ -42,7 +44,7 @@ int main (int ac, char **av)
                 free (line);
                 return (perror("Error :"), 1);
             }
-            // buffer[counter] = 0;
+            buffer[counter] = 0;
             line = ft_strjoin(line, buffer);
             if (!line)
                 return (perror("Error :"), 1);
