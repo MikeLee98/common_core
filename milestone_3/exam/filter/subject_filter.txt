@@ -1,7 +1,7 @@
-Assignment name  : filter
-Expected files   : filter.c
+Assignment name              : filter
+Expected files               : filter.c
 Allowed functions and globals: read, write, strlen, memmem, memmove, malloc, calloc,
-    realloc, free, printf, fprintf, stdout, stderr, perror
+realloc, free, printf, fprintf, stdout, stderr, perror
 --------------------------------------------------------------------------------
 
 Write a program that will take one and only one argument s.
@@ -12,13 +12,14 @@ of s). Your program will be tested with random buffer sizes, using a custom read
 function. Therefore the buffer being set in your program will be filled with a
 different number of chars each new call.
 
+
 For example:
 
-$>./filter hello
+./filter bonjour
 will behave in the same way as:
-sed 's/hello/*****/g'
+sed 's/bonjour/*******/g'
 
-$>./filter abc
+./filter abc
 will behave in the same way as:
 sed 's/abc/***/g'
 
@@ -33,10 +34,7 @@ arguments, it must return 1.
 
 For example this should work:
 
-$> echo 'abcdefaaabdeabcdeabcabcdbc' | ./filter abc | cat -e
-def*****de*****dbc$
-$> echo 'abbacababac' | ./filter abac | cat -e
-abbac****$
-
-$> echo 'ASSASSIN' | ./filter ASS | cat -e
-******IN$
+$> echo 'abcdefaaaabcdeabcabcdabc' | ./filter abc | cat -e
+***defaaa***de******d***$
+$> echo 'ababcabababc' | ./filter ababc | cat -e
+*****ab*****$
