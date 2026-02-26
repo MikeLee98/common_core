@@ -6,9 +6,9 @@
 
 int main(int ac, char **av)
 {
-    static char buffer[10000];
-    int bytes_read;
+    static char buffer[100000];
     char *line;
+    int bytes_read;
     int i;
 
     i = 0;
