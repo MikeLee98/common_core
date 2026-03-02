@@ -7,11 +7,9 @@ int main(int ac, char **av)
 {
     static char buffer[100000];
     char *filter;
-    int bytes_read;
-    int i;
+    int i = 0;
+    int bytes_read = 1;
 
-    i = 0;
-    bytes_read = 1;
     if (ac != 2 || av[1][0] == '\0')
         return (1);
     while (bytes_read > 0)
