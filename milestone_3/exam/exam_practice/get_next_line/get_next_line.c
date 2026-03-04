@@ -3,7 +3,7 @@
 char *ft_strchr(char *s, int c)
 {
     int i = 0;
-    while (s[i] != c && s[i] != '\0')
+    while (s[i] != c && s[i])
         i++;
     if (s[i] == c)
         return s + i;
@@ -59,7 +59,7 @@ void *ft_memmove(void *dest, const void *src, size_t n)
     else if (dest == src || n == 0)
         return dest;
     size_t i = 0;
-    while (i <= n)
+    while (i < n)
     {
         ((char*)dest)[i] = ((char*)src)[i];
         i++;
@@ -71,7 +71,6 @@ char *get_next_line(int fd)
 {
     static char b[BUFFER_SIZE + 1] = "";
     char *ret = NULL;
-
     char *tmp = ft_strchr(b, '\n');
     while (!tmp)
     {
@@ -95,20 +94,4 @@ char *get_next_line(int fd)
     }
     ft_memmove(b, tmp + 1, ft_strlen(tmp + 1) + 1);
     return ret;
-}
-
-int main(void)
-{
-    int fd;
-    char *line;
-    fd = open("get_next_line.h", O_RDONLY);
-    line = get_next_line(fd);
-    while (line)
-    {
-        printf("%s", line);
-        free(line);
-        line = get_next_line(fd);
-    }
-    close(fd);
-    return (0);
 }
