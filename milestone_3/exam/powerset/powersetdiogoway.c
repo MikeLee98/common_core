@@ -9,10 +9,8 @@ void	print_set (int *set, int size)
 	while (i < size)
 	{
 		printf("%d", set[i]);
-		 if (i < size - 1)
-        {
+		if (i < size - 1)
             printf(" ");
-        }
 		i++;
 	}
 	printf("\n");
@@ -37,7 +35,7 @@ int main (int ac, char **av)
 {
 	int n = ac - 2;
 	int soma = 0;
-	int *nums = malloc (sizeof (int) * n);
+	int *nums = malloc (sizeof(int) * n);
 	int *set = malloc (sizeof(int) * n);
 	int i = 0;
 	int target = atoi(av[1]);

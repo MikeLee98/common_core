@@ -1,63 +1,60 @@
-
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdio.h>
-#include <stdbool.h>
+#include <stdlib.h>
 
-void    print_positions(int nb, int *positions)
+void print_solution(int *positions, int n)
 {
     int i = 0;
-
-    while (i < nb)
+    while (i < n)
     {
         printf("%d", positions[i]);
-        if (i + 1 != nb)
+        if (i < n - 1)
             printf(" ");
         i++;
     }
     printf("\n");
 }
 
-bool    is_valid(int pos, int *positions, int row)
+int is_valid(int *positions, int row, int pos)
 {
     int i = row - 1;
-
-    while (i >= 0 && positions[i] != -1)
+    while (i >= 0)
     {
         int t = positions[i];
+
         if (pos == t || pos == t + (row - i) || pos == t - (row - i))
-            return (false);
+            return (0);
         i--;
     }
-    return (true);
+    return (1);
 }
 
-void    solve(int nb, int *positions, int row)
+void place_queens(int n, int *positions, int row)
 {
     int pos = 0;
 
-    while (pos < nb)
+    if (row == n)
     {
-        if (is_valid(pos, positions, row))
+        print_solution(positions, n);
+        return;
+    }
+    while (pos < n)
+    {
+        if (is_valid(positions, row, pos))
         {
             positions[row] = pos;
-            if (row + 1 == nb)
-                print_positions(nb, positions);
-            else
-                solve(nb, positions, row + 1);
+            place_queens(n, positions, row + 1);
         }
-        positions[row] = -1;
         pos++;
     }
 }
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
-    int nb = 0;
-    int positions[11] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+    if (argc != 2)
+        return 1;
+    int n = atoi(argv[1]);
+    int positions[n];
 
-    if (ac != 2)
-        return (write(2, "Invalid n of arguments\n", 23));
-    nb = atoi(av[1]);
-    solve(nb, positions, 0);
+    place_queens(n, positions, 0);
+    return 0;
 }

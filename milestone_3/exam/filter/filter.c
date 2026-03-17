@@ -1,67 +1,36 @@
 #define _GNU_SOURCE
 #include <string.h>
-#include <stdio.h>
 #include <unistd.h>
-#include <stdlib.h>
+#include <stdio.h>
 
-char *ft_strjoin (char *s1, char *s2)
+int main(int ac, char **av)
 {
-    int size1;
-    int size2;
-    char *s3;
-
-    if (!s1)
-        size1 = 0;
-    else
-        size1 = strlen(s1);
-    size2 = strlen(s2);
-    s3 = calloc(size1 + size2 +1, 1);
-    if (!s3)
-        return (NULL);
-    if (s1)
-        memmove (s3, s1, size1);
-    memmove (s3 + size1, s2, size2);
-    free (s1);
-    return (s3);
-}
-
-int main (int ac, char **av)
-{
-    char *line = NULL;
-    static char buffer[1000];
-    int counter = 0;
+    static char buffer[1000000];
+    char *filter;
     int i = 0;
-    char *tmp = NULL;
+    int bytes_read = 1;
 
-	if (ac != 2 || av[1][0] == '\0')
-    	return (1);
-    if (ac == 2)
+    if (ac != 2 || av[1][0] == '\0')
+        return (1);
+    while (bytes_read > 0)
     {
-        while ((counter = read (0, buffer, 999)) != 0)
-        {
-            if (counter == -1)
-            {
-                free (line);
-                return (perror("Error :"), 1);
-            }
-            buffer[counter] = 0;
-            line = ft_strjoin(line, buffer);
-            if (!line)
-                return (perror("Error :"), 1);
-        }
-        while (memmem(line, strlen(line), av[1], strlen(av[1])) != NULL)
-        {
-            tmp = memmem(line, strlen(line), av[1], strlen(av[1]));
-            while (i < strlen(av[1]))
-            {
-                tmp[i] = '*';
-                i++;
-            }
-            i = 0;
-        }
-        printf("%s", line);
-        free (line);
-        return (0);
+        bytes_read = read(0, &buffer[i], 1);
+        if (bytes_read == -1)
+            return (perror("Error :"), 1);
+        i++;
     }
-    return (1);
+    buffer[i] = '\0';
+    i = 0;
+    while (memmem(buffer, strlen(buffer), av[1], strlen(av[1])))
+    {
+        filter = memmem(buffer, strlen(buffer), av[1], strlen(av[1]));
+        while (i < (int)strlen(av[1]))
+        {
+            filter[i] = '*';
+            i++;
+        }
+        i = 0;
+    }
+    printf("%s", buffer);
+    return (0);
 }

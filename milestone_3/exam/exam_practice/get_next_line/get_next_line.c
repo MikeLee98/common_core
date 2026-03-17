@@ -71,6 +71,7 @@ char *get_next_line(int fd)
 {
     static char b[BUFFER_SIZE + 1] = "";
     char *ret = NULL;
+
     char *tmp = ft_strchr(b, '\n');
     while (!tmp)
     {
@@ -83,7 +84,7 @@ char *get_next_line(int fd)
             if (ret && *ret)
                 return (ret);
             free(ret);
-            return (NULL);
+            return NULL;
         }
         b[read_ret] = 0;
     }
@@ -94,4 +95,21 @@ char *get_next_line(int fd)
     }
     ft_memmove(b, tmp + 1, ft_strlen(tmp + 1) + 1);
     return ret;
+}
+
+int main(void)
+{
+    int fd;
+    char *line;
+
+    fd = open("get_next_line.h", O_RDONLY);
+    line = get_next_line(fd);
+    while (line)
+    {
+        printf("%s", line);
+        free(line);
+        line = get_next_line(fd);
+    }
+    close(fd);
+    return (0);
 }

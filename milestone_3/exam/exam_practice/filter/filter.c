@@ -5,10 +5,10 @@
 
 int main(int ac, char **av)
 {
-    static char buffer[100000];
+    char buffer[1000000];
     char *filter;
-    int i = 0;
     int bytes_read = 1;
+    int i = 0;
 
     if (ac != 2 || av[1][0] == '\0')
         return (1);
@@ -21,7 +21,7 @@ int main(int ac, char **av)
     }
     buffer[i] = '\0';
     i = 0;
-    while (memmem(buffer, strlen(buffer), av[1], strlen(av[1])) != NULL)
+    while (memmem(buffer, strlen(buffer), av[1], strlen(av[1])))
     {
         filter = memmem(buffer, strlen(buffer), av[1], strlen(av[1]));
         while (i < (int)strlen(av[1]))
