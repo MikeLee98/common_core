@@ -1,14 +1,13 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-void print_set(int *subset, int subset_size)
+void print_sets(int *subset, int subset_size)
 {
     int i = 0;
 
     while (i < subset_size)
     {
-        printf("%d", subset[i]);
-        i++;
+        printf("%d", subset[i++]);
         if (i < subset_size)
             printf(" ");
     }
@@ -18,7 +17,7 @@ void print_set(int *subset, int subset_size)
 void find_sets(int target, int set_size, int *set, int *subset, int set_index, int subset_index, int sum)
 {
     if (sum == target)
-        print_set(subset, subset_index);
+        print_sets(subset, subset_index);
     while (set_index < set_size)
     {
         subset[subset_index] = set[set_index];

@@ -1,11 +1,11 @@
 #define _GNU_SOURCE
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 
 int main(int ac, char **av)
 {
-    char buffer[1000000];
+    static char buffer[1000000];
     char *filter;
     int bytes_read = 1;
     int i = 0;

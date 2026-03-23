@@ -40,8 +40,6 @@ int main(int ac, char **av)
         set[i] = atoi(av[i + 2]);
         i++;
     }
-    if (atoi(av[1]) == 0)
-        printf("\n");
     find_sets(atoi(av[1]), set_size, set, subset, 0, 0, 0);
     return (0);
 }

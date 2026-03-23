@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void print_solutions(int *positions, int n)
 {
@@ -7,8 +7,7 @@ void print_solutions(int *positions, int n)
 
     while (i < n)
     {
-        printf("%d", positions[i]);
-        i++;
+        printf("%d", positions[i++]);
         if (i < n)
             printf(" ");
     }
