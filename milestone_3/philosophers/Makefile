@@ -6,7 +6,7 @@
 #    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/30 08:48:28 by mario             #+#    #+#              #
-#    Updated: 2026/03/31 11:15:06 by mario            ###   ########.fr        #
+#    Updated: 2026/04/03 02:28:27 by mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ SRC_DIR = src
 OBJ_DIR = obj
 INCLUDES = -Iinc
 
-SRCS = $(SRC_DIR)/philosophers.c
-OBJS = $(OBJ_DIR)/philosophers.o
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/monitor.c $(SRC_DIR)/routine.c $(SRC_DIR)/utils.c
+OBJS = $(OBJ_DIR)/main.o $(OBJ_DIR)/monitor.o $(OBJ_DIR)/routine.o $(OBJ_DIR)/utils.o
 
 all: $(NAME)
 
@@ -42,4 +42,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
