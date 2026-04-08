@@ -1,0 +1,83 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   actions.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/07 20:37:00 by mario             #+#    #+#             */
+/*   Updated: 2026/04/08 22:39:53 by mario            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/philosophers.h"
+
+void sleep_philo(t_philo *philo)
+{
+    print_status(philo, "is sleeping");
+    smart_sleep(philo->params->time_to_sleep, philo);
+}
+
+void think(t_philo *philo)
+{
+    print_status(philo, "is thinking");
+}
+
+void get_forks(t_philo *philo, pthread_mutex_t **first, pthread_mutex_t **second)
+{
+    int left = philo->id - 1;
+    int right = philo->id % philo->params->num_of_philos;
+
+    if (left < right)
+    {
+        *first = &philo->mutex->forks[left];
+        *second = &philo->mutex->forks[right];
+    }
+    else
+    {
+        *first = &philo->mutex->forks[right];
+        *second = &philo->mutex->forks[left];
+    }
+}
+
+void eat(t_philo *philo)
+{
+    pthread_mutex_t *first;
+    pthread_mutex_t *second;
+
+    get_forks(philo, &first, &second);
+
+    // Lock first fork
+    pthread_mutex_lock(first);
+    print_status(philo, "has taken a fork");
+
+    // Lock second fork
+    pthread_mutex_lock(second);
+    print_status(philo, "has taken a fork");
+
+    // Update last meal and meals eaten safely
+    pthread_mutex_lock(&philo->mutex->philo_lock[philo->id - 1]);
+    philo->last_meal = ft_get_time();
+    philo->meals_eaten++;
+	if (philo->meals_eaten == philo->params->num_times_to_eat)
+		philo->full = 1;
+    pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id - 1]);
+
+    // Eating
+    print_status(philo, "is eating");
+    smart_sleep(philo->params->time_to_eat, philo);
+
+    // Release forks
+    pthread_mutex_unlock(second);
+    pthread_mutex_unlock(first);
+}
+
+void	single(char **av)
+{
+	long	time;
+
+	time = ft_atol(av[2]);
+	printf("0 1 has taken a fork\n");
+	usleep(time * 1000);
+	printf("%ld 1 died\n", time);
+}

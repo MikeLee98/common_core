@@ -1,0 +1,79 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   monitor.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/03 01:25:18 by mario             #+#    #+#             */
+/*   Updated: 2026/04/08 22:09:18 by mario            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/philosophers.h"
+
+int check_fullness(t_data *data)
+{
+    int i;
+    int full_count;
+
+    full_count = 0;
+    for (i = 0; i < data->params.num_of_philos; i++)
+    {
+        pthread_mutex_lock(&data->mutex.philo_lock[i]);
+        if (data->philos[i].full == 1)
+            full_count++;
+        pthread_mutex_unlock(&data->mutex.philo_lock[i]);
+
+        if (full_count == data->params.num_of_philos)
+        {
+            // Stop simulation safely
+            pthread_mutex_lock(&data->mutex.dead_lock);
+            data->params.dead_flag = 1;
+            pthread_mutex_unlock(&data->mutex.dead_lock);
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int check_death(t_data *data)
+{
+    int i;
+    size_t starve_time;
+    int is_full;
+
+    for (i = 0; i < data->params.num_of_philos; i++)
+    {
+        pthread_mutex_lock(&data->mutex.philo_lock[i]);
+        starve_time = ft_get_time() - data->philos[i].last_meal;
+        is_full = data->philos[i].full;
+        pthread_mutex_unlock(&data->mutex.philo_lock[i]);
+
+        if (starve_time >= data->params.time_to_die && !is_full)
+        {
+            // Set dead flag
+            pthread_mutex_lock(&data->mutex.dead_lock);
+            data->params.dead_flag = 1;
+            pthread_mutex_unlock(&data->mutex.dead_lock);
+
+            // Print death safely
+            pthread_mutex_lock(&data->mutex.print_lock);
+            printf("%ld %d died\n", ft_get_time() - data->params.time_start, data->philos[i].id);
+            pthread_mutex_unlock(&data->mutex.print_lock);
+
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void monitor(t_data *data)
+{
+	while (1)
+	{
+		if (!check_death(data) || !check_fullness(data))
+			break ;
+		usleep(500);
+	}
+}
