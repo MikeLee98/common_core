@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
-#define PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 #include <pthread.h>
 #include <sys/time.h>
@@ -19,8 +19,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-
-#define MAX_PHILO 201
 
 typedef struct s_parameters
 {
@@ -36,10 +34,10 @@ typedef struct s_parameters
 
 typedef struct s_mutex
 {
-    pthread_mutex_t  forks[MAX_PHILO];
+    pthread_mutex_t  *forks;
     pthread_mutex_t  dead_lock;
     pthread_mutex_t  print_lock;
-    pthread_mutex_t  philo_lock[MAX_PHILO];
+    pthread_mutex_t  *philo_lock;
     
 } t_mutex;
 
@@ -50,9 +48,9 @@ typedef struct s_philo
     pthread_t        thread;
 
     // State
-    int              meals_eaten;
-    long           last_meal;
-    int              full;
+    int     meals_eaten;
+    long    last_meal;
+    int     full;
 
     // Forks
     pthread_mutex_t  *l_fork;
@@ -73,7 +71,7 @@ typedef struct s_data
     t_mutex          mutex;
 
     // Forks & philosophers
-    t_philo          philos[MAX_PHILO];
+    t_philo          philos;
 
 } t_data;
 

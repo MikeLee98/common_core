@@ -81,6 +81,32 @@ int init_mutexes(t_data *data)
     return (0);
 }
 
+int alloc_data(t_data *data)
+{
+    int n = data->params.num_of_philos;
+
+    data->philos = malloc(sizeof(t_philo) * (n + 1)); // 1-based indexing
+    if (!data->philos)
+        return (1);
+
+    data->mutex.forks = malloc(sizeof(pthread_mutex_t) * (n + 1));
+    if (!data->mutex.forks)
+    {
+        free(data->philos);
+        return (1);
+    }
+
+    data->mutex.philo_lock = malloc(sizeof(pthread_mutex_t) * (n + 1));
+    if (!data->mutex.philo_lock)
+    {
+        free(data->philos);
+        free(data->mutex.forks);
+        return (1);
+    }
+
+    return (0);
+}
+
 int init_program(t_data *data, int ac, char **av)
 {
     data->params.num_of_philos = atoi(av[1]);
@@ -104,6 +130,9 @@ int init_program(t_data *data, int ac, char **av)
 
 int create(t_data *data)
 {
+    if (alloc_data(data))
+        return (1);
+
     // Initialize philosophers
     init_philos(data);
     

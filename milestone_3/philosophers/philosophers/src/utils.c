@@ -65,12 +65,19 @@ long ft_get_time(void)
 void destroy_mutexes(t_data *data)
 {
     int i = 1;
-    while (i <= data->params.num_of_philos)
+    int n = data->params.num_of_philos;
+
+    while (i <= n)
     {
         pthread_mutex_destroy(&data->mutex.forks[i]);
         pthread_mutex_destroy(&data->mutex.philo_lock[i]);
         i++;
     }
+
     pthread_mutex_destroy(&data->mutex.dead_lock);
     pthread_mutex_destroy(&data->mutex.print_lock);
+
+    free(data->philos);
+    free(data->mutex.forks);
+    free(data->mutex.philo_lock);
 }
