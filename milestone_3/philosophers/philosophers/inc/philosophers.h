@@ -19,17 +19,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_PHILO 200
+#define MAX_PHILO 201
 
 typedef struct s_parameters
 {
-    size_t           time_start;
-    int              num_of_philos;
-    size_t           time_to_die;
-    size_t           time_to_eat;
-    size_t           time_to_sleep;
-    int              num_times_to_eat; // -1 if not specified
-    int              dead_flag;
+    long    time_start;
+    int     num_of_philos;
+    long    time_to_die;
+    long    time_to_eat;
+    long    time_to_sleep;
+    int     num_times_to_eat; // -1 if not specified
+    int     dead_flag;
 
 } t_parameters;
 
@@ -50,7 +50,7 @@ typedef struct s_philo
 
     // State
     int              meals_eaten;
-    size_t           last_meal;
+    long           last_meal;
     int              full;
 
     // Forks
@@ -81,7 +81,7 @@ typedef struct s_data
 void print_status(t_philo *philo, char *msg);
 void smart_sleep(size_t time, t_philo *philo);
 int sim_should_stop(t_philo *philo);
-size_t ft_get_time(void);
+long ft_get_time(void);
 void destroy_mutexes(t_data *data);
 void single(char **av);
 void init_philos(t_data *data);

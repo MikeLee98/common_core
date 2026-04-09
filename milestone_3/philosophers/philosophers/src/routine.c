@@ -19,23 +19,20 @@ void *philo_routine(void *arg)
 
     philo = (t_philo *)arg;
 
-    pthread_mutex_lock(&philo->mutex->philo_lock[philo->id - 1]);
+    pthread_mutex_lock(&philo->mutex->philo_lock[philo->id]);
     philo->last_meal = ft_get_time();
-    pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id - 1]);
+    pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id]);
 	if (philo->id % 2 == 0)
 		smart_sleep(10, philo);
-
-    if (philo->id % 2 == 0)
-        smart_sleep(10, philo);
 
     while (!sim_should_stop(philo))
     {
         eat(philo);
         if (sim_should_stop(philo))
             break ;
-        pthread_mutex_lock(&philo->mutex->philo_lock[philo->id - 1]);
+        pthread_mutex_lock(&philo->mutex->philo_lock[philo->id]);
         is_full = philo->full;
-        pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id - 1]);
+        pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id]);
 
         if (is_full)
             break ;
@@ -44,6 +41,7 @@ void *philo_routine(void *arg)
         if (sim_should_stop(philo))
             break ;
         think(philo);
+        usleep(500);
     }
     return (NULL);
 }

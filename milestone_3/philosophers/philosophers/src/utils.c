@@ -54,7 +54,7 @@ int sim_should_stop(t_philo *philo)
     return (stop);
 }
 
-size_t ft_get_time(void)
+long ft_get_time(void)
 {
     struct timeval tv;
 
@@ -64,15 +64,13 @@ size_t ft_get_time(void)
 
 void destroy_mutexes(t_data *data)
 {
-    int i = 0;
-
-    while (i < data->params.num_of_philos)
+    int i = 1;
+    while (i <= data->params.num_of_philos)
     {
         pthread_mutex_destroy(&data->mutex.forks[i]);
         pthread_mutex_destroy(&data->mutex.philo_lock[i]);
         i++;
     }
-
     pthread_mutex_destroy(&data->mutex.dead_lock);
     pthread_mutex_destroy(&data->mutex.print_lock);
 }

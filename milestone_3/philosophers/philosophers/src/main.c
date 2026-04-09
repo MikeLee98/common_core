@@ -16,8 +16,8 @@ int join_threads(t_data *data)
 {
     int i;
 
-    i = 0;
-    while (i < data->params.num_of_philos)
+    i = 1;
+    while (i <= data->params.num_of_philos)
     {
         if (pthread_join(data->philos[i].thread, NULL))
             return (1);
@@ -33,8 +33,8 @@ int create_threads(t_data *data)
     // Set start time BEFORE threads begin
     data->params.time_start = ft_get_time();
 
-    i = 0;
-    while (i < data->params.num_of_philos)
+    i = 1;
+    while (i <= data->params.num_of_philos)
     {
         data->philos[i].last_meal = data->params.time_start;
 
@@ -47,22 +47,16 @@ int create_threads(t_data *data)
 
 void init_philos(t_data *data)
 {
-    int i;
-    int n;
-
-    i = 0;
-    n = data->params.num_of_philos;
-
-    while (i < n)
+    int i = 1;
+    int n = data->params.num_of_philos;
+    while (i <= n)
     {
-        data->philos[i].id = i + 1;
+        data->philos[i].id = i;
         data->philos[i].meals_eaten = 0;
         data->philos[i].last_meal = 0;
         data->philos[i].full = 0;
-
         data->philos[i].l_fork = &data->mutex.forks[i];
-        data->philos[i].r_fork = &data->mutex.forks[(i + 1) % n];
-
+        data->philos[i].r_fork = &data->mutex.forks[i % n + 1];
         data->philos[i].params = &data->params;
         data->philos[i].mutex = &data->mutex;
         i++;
@@ -71,10 +65,8 @@ void init_philos(t_data *data)
 
 int init_mutexes(t_data *data)
 {
-    int i;
-
-    i = 0;
-    while (i < data->params.num_of_philos)
+    int i = 1;
+    while (i <= data->params.num_of_philos)
     {
         if (pthread_mutex_init(&data->mutex.forks[i], NULL))
             return (1);
@@ -82,12 +74,10 @@ int init_mutexes(t_data *data)
             return (1);
         i++;
     }
-
     if (pthread_mutex_init(&data->mutex.dead_lock, NULL))
         return (1);
     if (pthread_mutex_init(&data->mutex.print_lock, NULL))
         return (1);
-
     return (0);
 }
 

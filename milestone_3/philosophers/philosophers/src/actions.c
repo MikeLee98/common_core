@@ -25,9 +25,8 @@ void think(t_philo *philo)
 
 void get_forks(t_philo *philo, pthread_mutex_t **first, pthread_mutex_t **second)
 {
-    int left = philo->id - 1;
-    int right = philo->id % philo->params->num_of_philos;
-
+    int left = philo->id;
+    int right = philo->id % philo->params->num_of_philos + 1;
     if (left < right)
     {
         *first = &philo->mutex->forks[left];
@@ -44,30 +43,23 @@ void eat(t_philo *philo)
 {
     pthread_mutex_t *first;
     pthread_mutex_t *second;
-
     get_forks(philo, &first, &second);
 
-    // Lock first fork
     pthread_mutex_lock(first);
     print_status(philo, "has taken a fork");
-
-    // Lock second fork
     pthread_mutex_lock(second);
     print_status(philo, "has taken a fork");
 
-    // Update last meal and meals eaten safely
-    pthread_mutex_lock(&philo->mutex->philo_lock[philo->id - 1]);
+    pthread_mutex_lock(&philo->mutex->philo_lock[philo->id]);
     philo->last_meal = ft_get_time();
     philo->meals_eaten++;
-	if (philo->meals_eaten == philo->params->num_times_to_eat)
-		philo->full = 1;
-    pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id - 1]);
+    if (philo->meals_eaten == philo->params->num_times_to_eat)
+        philo->full = 1;
+    pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id]);
 
-    // Eating
     print_status(philo, "is eating");
     smart_sleep(philo->params->time_to_eat, philo);
 
-    // Release forks
     pthread_mutex_unlock(second);
     pthread_mutex_unlock(first);
 }
