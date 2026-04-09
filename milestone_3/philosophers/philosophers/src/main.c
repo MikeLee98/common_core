@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 00:47:46 by mario             #+#    #+#             */
-/*   Updated: 2026/04/08 22:14:08 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 20:47:14 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int init_mutexes(t_data *data)
     {
         if (pthread_mutex_init(&data->mutex.forks[i], NULL))
             return (1);
-        if (pthread_mutex_init(&data->mutex.philo_lock[i], NULL))
-            return (1);
         i++;
     }
+    if (pthread_mutex_init(&data->mutex.meal_lock, NULL))
+        return (1);
     if (pthread_mutex_init(&data->mutex.dead_lock, NULL))
         return (1);
     if (pthread_mutex_init(&data->mutex.print_lock, NULL))
@@ -96,34 +96,23 @@ int alloc_data(t_data *data)
         return (1);
     }
 
-    data->mutex.philo_lock = malloc(sizeof(pthread_mutex_t) * (n + 1));
-    if (!data->mutex.philo_lock)
-    {
-        free(data->philos);
-        free(data->mutex.forks);
-        return (1);
-    }
-
     return (0);
 }
 
 int init_program(t_data *data, int ac, char **av)
 {
-    data->params.num_of_philos = atoi(av[1]);
-    data->params.time_to_die = atoi(av[2]);
-    data->params.time_to_eat = atoi(av[3]);
-    data->params.time_to_sleep = atoi(av[4]);
+    data->params.num_of_philos = ft_atol(av[1]);
+    data->params.time_to_die = ft_atol(av[2]);
+    data->params.time_to_eat = ft_atol(av[3]);
+    data->params.time_to_sleep = ft_atol(av[4]);
 
     if (ac == 6)
-        data->params.num_times_to_eat = atoi(av[5]);
+        data->params.num_times_to_eat = ft_atol(av[5]);
     else
         data->params.num_times_to_eat = -1;
 
     data->params.dead_flag = 0;
     data->params.time_start = ft_get_time();
-
-    if (data->params.num_of_philos > MAX_PHILO)
-        return (1);
 
     return (0);
 }

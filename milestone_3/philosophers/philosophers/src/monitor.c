@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 01:25:18 by mario             #+#    #+#             */
-/*   Updated: 2026/04/08 22:09:18 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 20:47:54 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int check_fullness(t_data *data)
     i = 1;
     while (i <= data->params.num_of_philos)
     {
-        pthread_mutex_lock(&data->mutex.philo_lock[i]);
+        pthread_mutex_lock(&data->mutex.meal_lock);
         if (data->philos[i].full == 1)
             full_count++;
-        pthread_mutex_unlock(&data->mutex.philo_lock[i]);
+        pthread_mutex_unlock(&data->mutex.meal_lock);
 
         if (full_count == data->params.num_of_philos)
         {
@@ -47,10 +47,10 @@ int check_death(t_data *data)
     i = 1;
     while (i <= data->params.num_of_philos)
     {
-        pthread_mutex_lock(&data->mutex.philo_lock[i]);
+        pthread_mutex_lock(&data->mutex.meal_lock);
         starve_time = ft_get_time() - data->philos[i].last_meal;
         is_full = data->philos[i].full;
-        pthread_mutex_unlock(&data->mutex.philo_lock[i]);
+        pthread_mutex_unlock(&data->mutex.meal_lock);
 
         if (starve_time >= data->params.time_to_die && !is_full)
         {

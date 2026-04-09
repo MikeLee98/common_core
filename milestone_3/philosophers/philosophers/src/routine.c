@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 02:26:01 by mario             #+#    #+#             */
-/*   Updated: 2026/04/08 22:43:55 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 20:49:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void *philo_routine(void *arg)
 
     philo = (t_philo *)arg;
 
-    pthread_mutex_lock(&philo->mutex->philo_lock[philo->id]);
+    pthread_mutex_lock(&philo->mutex->meal_lock);
     philo->last_meal = ft_get_time();
-    pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id]);
+    pthread_mutex_unlock(&philo->mutex->meal_lock);
 	if (philo->id % 2 == 0)
 		smart_sleep(10, philo);
 
@@ -30,9 +30,9 @@ void *philo_routine(void *arg)
         eat(philo);
         if (sim_should_stop(philo))
             break ;
-        pthread_mutex_lock(&philo->mutex->philo_lock[philo->id]);
+        pthread_mutex_lock(&philo->mutex->meal_lock);
         is_full = philo->full;
-        pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id]);
+        pthread_mutex_unlock(&philo->mutex->meal_lock);
 
         if (is_full)
             break ;

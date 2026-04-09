@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 20:37:00 by mario             #+#    #+#             */
-/*   Updated: 2026/04/08 22:39:53 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 20:46:06 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,16 @@ void eat(t_philo *philo)
     pthread_mutex_lock(second);
     print_status(philo, "has taken a fork");
 
-    pthread_mutex_lock(&philo->mutex->philo_lock[philo->id]);
+    pthread_mutex_lock(&philo->mutex->meal_lock);
     philo->last_meal = ft_get_time();
     philo->meals_eaten++;
     if (philo->meals_eaten == philo->params->num_times_to_eat)
         philo->full = 1;
-    pthread_mutex_unlock(&philo->mutex->philo_lock[philo->id]);
+    pthread_mutex_unlock(&philo->mutex->meal_lock);
 
     print_status(philo, "is eating");
     smart_sleep(philo->params->time_to_eat, philo);
 
     pthread_mutex_unlock(second);
     pthread_mutex_unlock(first);
-}
-
-void	single(char **av)
-{
-	long	time;
-
-	time = ft_atol(av[2]);
-	printf("0 1 has taken a fork\n");
-	usleep(time * 1000);
-	printf("%ld 1 died\n", time);
 }

@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 00:52:06 by mario             #+#    #+#             */
-/*   Updated: 2026/04/08 22:01:52 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 20:49:43 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,13 @@ void destroy_mutexes(t_data *data)
     while (i <= n)
     {
         pthread_mutex_destroy(&data->mutex.forks[i]);
-        pthread_mutex_destroy(&data->mutex.philo_lock[i]);
         i++;
     }
 
+    pthread_mutex_destroy(&data->mutex.meal_lock);
     pthread_mutex_destroy(&data->mutex.dead_lock);
     pthread_mutex_destroy(&data->mutex.print_lock);
 
     free(data->philos);
     free(data->mutex.forks);
-    free(data->mutex.philo_lock);
 }

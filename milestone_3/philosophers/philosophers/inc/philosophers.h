@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 02:48:30 by mario             #+#    #+#             */
-/*   Updated: 2026/04/08 22:15:36 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 20:45:33 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_mutex
     pthread_mutex_t  *forks;
     pthread_mutex_t  dead_lock;
     pthread_mutex_t  print_lock;
-    pthread_mutex_t  *philo_lock;
+    pthread_mutex_t  meal_lock;
     
 } t_mutex;
 
@@ -71,7 +71,7 @@ typedef struct s_data
     t_mutex          mutex;
 
     // Forks & philosophers
-    t_philo          philos;
+    t_philo          *philos;
 
 } t_data;
 
