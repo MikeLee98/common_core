@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 00:52:06 by mario             #+#    #+#             */
-/*   Updated: 2026/04/09 20:49:43 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 23:23:38 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,23 @@ long ft_get_time(void)
     return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
-void destroy_mutexes(t_data *data)
+
+
+int	alloc_data(t_data *data)
 {
-    int i = 1;
-    int n = data->params.num_of_philos;
+	int	n;
 
-    while (i <= n)
-    {
-        pthread_mutex_destroy(&data->mutex.forks[i]);
-        i++;
-    }
-
-    pthread_mutex_destroy(&data->mutex.meal_lock);
-    pthread_mutex_destroy(&data->mutex.dead_lock);
-    pthread_mutex_destroy(&data->mutex.print_lock);
-
-    free(data->philos);
-    free(data->mutex.forks);
+	n = data->params.num_of_philos;
+	data->philos = malloc(sizeof(t_philo) * (n + 1));
+	if (!data->philos)
+		return (1);
+	data->mutex.forks = malloc(sizeof(pthread_mutex_t) * (n + 1));
+	if (!data->mutex.forks)
+	{
+		free(data->philos);
+		return (1);
+	}
+	return (0);
 }
+
+

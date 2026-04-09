@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   actions.c                                          :+:      :+:    :+:   */
+/*   states.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 20:37:00 by mario             #+#    #+#             */
-/*   Updated: 2026/04/09 20:46:06 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 22:37:41 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,31 @@ void think(t_philo *philo)
     print_status(philo, "is thinking");
 }
 
-void get_forks(t_philo *philo, pthread_mutex_t **first, pthread_mutex_t **second)
+void	get_forks(t_philo *philo, pthread_mutex_t **fst, pthread_mutex_t **snd)
 {
     int left = philo->id;
     int right = philo->id % philo->params->num_of_philos + 1;
     if (left < right)
     {
-        *first = &philo->mutex->forks[left];
-        *second = &philo->mutex->forks[right];
+        *fst = &philo->mutex->forks[left];
+        *snd = &philo->mutex->forks[right];
     }
     else
     {
-        *first = &philo->mutex->forks[right];
-        *second = &philo->mutex->forks[left];
+        *fst = &philo->mutex->forks[right];
+        *snd = &philo->mutex->forks[left];
     }
 }
 
 void eat(t_philo *philo)
 {
-    pthread_mutex_t *first;
-    pthread_mutex_t *second;
-    get_forks(philo, &first, &second);
+    pthread_mutex_t *fst;
+    pthread_mutex_t *snd;
+    get_forks(philo, &fst, &snd);
 
-    pthread_mutex_lock(first);
+    pthread_mutex_lock(fst);
     print_status(philo, "has taken a fork");
-    pthread_mutex_lock(second);
+    pthread_mutex_lock(snd);
     print_status(philo, "has taken a fork");
 
     pthread_mutex_lock(&philo->mutex->meal_lock);
@@ -60,6 +60,6 @@ void eat(t_philo *philo)
     print_status(philo, "is eating");
     smart_sleep(philo->params->time_to_eat, philo);
 
-    pthread_mutex_unlock(second);
-    pthread_mutex_unlock(first);
+    pthread_mutex_unlock(snd);
+    pthread_mutex_unlock(fst);
 }

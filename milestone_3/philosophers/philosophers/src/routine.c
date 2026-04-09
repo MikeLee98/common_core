@@ -6,13 +6,13 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 02:26:01 by mario             #+#    #+#             */
-/*   Updated: 2026/04/09 20:49:11 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/09 22:57:00 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-void *philo_routine(void *arg)
+void *routine(void *arg)
 {
     t_philo *philo;
     int     is_full;
