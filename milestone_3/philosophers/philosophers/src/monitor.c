@@ -6,13 +6,13 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 01:25:18 by mario             #+#    #+#             */
-/*   Updated: 2026/04/09 23:31:01 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/10 13:56:11 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-int	check_fullness(t_data *data)
+static int	check_fullness(t_data *data)
 {
 	int	i;
 	int	full_count;
@@ -37,7 +37,7 @@ int	check_fullness(t_data *data)
 	return (1);
 }
 
-int	check_death(t_data *data)
+static int	check_death(t_data *data)
 {
 	int		i;
 	long	starve_time;

@@ -6,13 +6,13 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 00:47:46 by mario             #+#    #+#             */
-/*   Updated: 2026/04/09 23:29:27 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/10 14:02:29 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "../inc/philosophers.h"
 
-int	create_threads(t_data *data)
+static int	create_threads(t_data *data)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ int	create_threads(t_data *data)
 	return (0);
 }
 
-void	init_philos(t_data *data)
+static void	init_philos(t_data *data)
 {
 	int	i;
 	int	n;
@@ -50,7 +50,7 @@ void	init_philos(t_data *data)
 	}
 }
 
-int	init_mutexes(t_data *data)
+static int	init_mutexes(t_data *data)
 {
 	int	i;
 
@@ -70,7 +70,7 @@ int	init_mutexes(t_data *data)
 	return (0);
 }
 
-void	init_program(t_data *data, int ac, char **av)
+static void	init_program(t_data *data, int ac, char **av)
 {
 	data->params.num_of_philos = ft_atol(av[1]);
 	data->params.time_to_die = ft_atol(av[2]);

@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 02:48:30 by mario             #+#    #+#             */
-/*   Updated: 2026/04/09 23:19:36 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/10 13:57:39 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,13 @@ int		sim_should_stop(t_philo *philo);
 long	ft_get_time(void);
 void	destroy_mutexes(t_data *data);
 void	single(char **av);
-void	init_philos(t_data *data);
-int		init_mutexes(t_data *data);
-int		create_threads(t_data *data);
 int		join_threads(t_data *data);
 int		parse_args(int ac, char **av);
-void	init_program(t_data *data, int ac, char **av);
 void	*routine(void *arg);
 void	monitor(t_data *data);
 void	eat(t_philo *philo);
 void	sleep_philo(t_philo *philo);
 void	think(t_philo *philo);
-int		create(t_data *data);
-int		check_fullness(t_data *data);
-int		check_death(t_data *data);
 void	get_forks(t_philo *philo, pthread_mutex_t **fst, pthread_mutex_t **snd);
 long	ft_atol(const char *str);
 int		alloc_data(t_data *data);

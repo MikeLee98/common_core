@@ -6,63 +6,57 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 00:52:06 by mario             #+#    #+#             */
-/*   Updated: 2026/04/09 23:23:38 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/10 14:10:52 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philosophers.h"
 
-void print_status(t_philo *philo, char *msg)
+void	print_status(t_philo *philo, char *msg)
 {
-    size_t time;
+	size_t	time;
 
-    pthread_mutex_lock(&philo->mutex->print_lock);
-
-    if (sim_should_stop(philo))
-    {
-        pthread_mutex_unlock(&philo->mutex->print_lock);
-        return;
-    }
-    
-    time = ft_get_time() - philo->params->time_start;
-    printf("%zu %d %s\n", time, philo->id, msg);
-
-    pthread_mutex_unlock(&philo->mutex->print_lock);
+	pthread_mutex_lock(&philo->mutex->print_lock);
+	if (sim_should_stop(philo))
+	{
+		pthread_mutex_unlock(&philo->mutex->print_lock);
+		return ;
+	}
+	time = ft_get_time() - philo->params->time_start;
+	printf("%zu %d %s\n", time, philo->id, msg);
+	pthread_mutex_unlock(&philo->mutex->print_lock);
 }
 
-void smart_sleep(size_t time, t_philo *philo)
+void	smart_sleep(size_t time, t_philo *philo)
 {
-    size_t start;
+	size_t	start;
 
-    start = ft_get_time();
-    while (ft_get_time() - start < time)
-    {
-        if (sim_should_stop(philo))
-            break;
-        usleep(500);
-    }
+	start = ft_get_time();
+	while (ft_get_time() - start < time)
+	{
+		if (sim_should_stop(philo))
+			break ;
+		usleep(500);
+	}
 }
 
-int sim_should_stop(t_philo *philo)
+int	sim_should_stop(t_philo *philo)
 {
-    int stop;
+	int	stop;
 
-    pthread_mutex_lock(&philo->mutex->dead_lock);
-    stop = philo->params->dead_flag;
-    pthread_mutex_unlock(&philo->mutex->dead_lock);
-
-    return (stop);
+	pthread_mutex_lock(&philo->mutex->dead_lock);
+	stop = philo->params->dead_flag;
+	pthread_mutex_unlock(&philo->mutex->dead_lock);
+	return (stop);
 }
 
-long ft_get_time(void)
+long	ft_get_time(void)
 {
-    struct timeval tv;
+	struct timeval	tv;
 
-    gettimeofday(&tv, NULL); // Could fail, but we won't handle that here for now
-    return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
-
-
 
 int	alloc_data(t_data *data)
 {
@@ -80,5 +74,3 @@ int	alloc_data(t_data *data)
 	}
 	return (0);
 }
-
-

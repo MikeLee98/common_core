@@ -6,7 +6,7 @@
 #    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/30 08:48:28 by mario             #+#    #+#              #
-#    Updated: 2026/04/09 20:51:45 by mario            ###   ########.fr        #
+#    Updated: 2026/04/10 14:05:23 by mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ SRC_DIR = src
 OBJ_DIR = obj
 INCLUDES = -Iinc
 
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/monitor.c $(SRC_DIR)/routine.c $(SRC_DIR)/utils.c $(SRC_DIR)/parser.c $(SRC_DIR)/states.c
-OBJS = $(OBJ_DIR)/main.o $(OBJ_DIR)/monitor.o $(OBJ_DIR)/routine.o $(OBJ_DIR)/utils.o $(OBJ_DIR)/parser.o $(OBJ_DIR)/states.o
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/monitor.c $(SRC_DIR)/routine.c $(SRC_DIR)/utils.c $(SRC_DIR)/parser.c $(SRC_DIR)/states.c $(SRC_DIR)/cleanup.c
+OBJS = $(OBJ_DIR)/main.o $(OBJ_DIR)/monitor.o $(OBJ_DIR)/routine.o $(OBJ_DIR)/utils.o $(OBJ_DIR)/parser.o $(OBJ_DIR)/states.o $(OBJ_DIR)/cleanup.o
 
 all: $(NAME)
 
