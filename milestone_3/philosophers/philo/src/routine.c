@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 02:26:01 by mario             #+#    #+#             */
-/*   Updated: 2026/04/10 14:08:27 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/10 20:18:52 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,4 @@ void    single(t_philo *philo)
     time = philo->params->time_to_die;
     printf("0 1 has taken a fork\n");
     usleep(time * 1000);
-    pthread_mutex_lock(&philo->mutex->dead_lock);
-    philo->params->dead_flag = 1;
-    pthread_mutex_unlock(&philo->mutex->dead_lock);
-    printf("%ld 1 died\n", ft_get_time() - philo->params->time_start);
 }
