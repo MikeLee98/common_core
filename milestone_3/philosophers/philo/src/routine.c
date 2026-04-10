@@ -6,7 +6,7 @@
 /*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 02:26:01 by mario             #+#    #+#             */
-/*   Updated: 2026/04/10 20:18:52 by mario            ###   ########.fr       */
+/*   Updated: 2026/04/10 20:19:43 by mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ void	*routine(void *arg)
 	return (NULL);
 }
 
-void    single(t_philo *philo)
+void	single(t_philo *philo)
 {
-    long    time;
+	long	time;
 
-    time = philo->params->time_to_die;
-    printf("0 1 has taken a fork\n");
-    usleep(time * 1000);
+	time = philo->params->time_to_die;
+	printf("0 1 has taken a fork\n");
+	usleep(time * 1000);
 }
