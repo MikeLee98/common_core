@@ -12,7 +12,7 @@ int picoshell(char **cmds[])
 
 	i = 0;
 	last_fd = -1;
-	while (cmds[1])
+	while (cmds[i])
 	{
 		if (cmds[i + 1] && pipe(fd) == -1)
 			return (1);
@@ -32,7 +32,7 @@ int picoshell(char **cmds[])
 			{
 				if (dup2(last_fd, STDIN_FILENO) == -1)
 					exit(1);
-					close(last_fd);
+				close(last_fd);
 			}
 			if (cmds[i + 1])
 			{
