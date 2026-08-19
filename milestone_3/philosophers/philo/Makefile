@@ -5,29 +5,36 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mario <mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/08/15 01:13:33 by mario             #+#    #+#              #
-#    Updated: 2026/08/15 01:31:19 by mario            ###   ########.fr        #
+#    Created: 2026/03/30 08:48:28 by mario             #+#    #+#              #
+#    Updated: 2026/08/15 01:25:34 by mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-RM = rm -rf
+NAME = philo
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
+SRC_DIR = src
+OBJ_DIR = obj
+INCLUDES = -Iinc
 
-SRC = megaphone.cpp
-OBJ = megaphone.o
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/monitor.c $(SRC_DIR)/routine.c $(SRC_DIR)/utils.c $(SRC_DIR)/parser.c $(SRC_DIR)/states.c $(SRC_DIR)/cleanup.c
+OBJS = $(OBJ_DIR)/main.o $(OBJ_DIR)/monitor.o $(OBJ_DIR)/routine.o $(OBJ_DIR)/utils.o $(OBJ_DIR)/parser.o $(OBJ_DIR)/states.o $(OBJ_DIR)/cleanup.o
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -lpthread -o $(NAME)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
