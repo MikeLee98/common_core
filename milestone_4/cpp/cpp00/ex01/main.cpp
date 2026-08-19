@@ -27,35 +27,35 @@ int main()
 			Contact newcontact;
 
 			input = "";
-			while (input == "")
+			while (input.find_first_not_of(" \t") == std::string::npos)
 			{
 				std::cout << "First name:";
 				std::getline(std::cin, input);	
 			}
 			newcontact.setFirstName(input);
 			input = "";
-			while (input == "")
+			while (input.find_first_not_of(" \t") == std::string::npos)
 			{
 				std::cout << "Last name:";
 				std::getline(std::cin, input);
 			}
 			newcontact.setLastName(input);
 			input = "";
-			while (input == "")
+			while (input.find_first_not_of(" \t") == std::string::npos)
 			{
 				std::cout << "Nickname:";
 				std::getline(std::cin, input);
 			}
 			newcontact.setNickname(input);
 			input = "";
-			while (input == "")
+			while (input.find_first_not_of(" \t") == std::string::npos)
 			{
 				std::cout << "Phone number:";
 				std::getline(std::cin, input);
 			}
 			newcontact.setPhoneNumber(input);
 			input = "";
-			while (input == "")
+			while (input.find_first_not_of(" \t") == std::string::npos)
 			{
 				std::cout << "Darkest secret:";
 				std::getline(std::cin, input);
