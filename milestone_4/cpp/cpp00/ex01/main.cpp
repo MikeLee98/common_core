@@ -30,7 +30,7 @@ int main()
 			while (input.find_first_not_of(" \t") == std::string::npos)
 			{
 				std::cout << "First name:";
-				std::getline(std::cin, input);	
+				std::getline(std::cin, input);
 			}
 			newcontact.setFirstName(input);
 			input = "";
