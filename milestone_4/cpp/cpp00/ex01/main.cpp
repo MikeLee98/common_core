@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mario <mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 12:19:35 by mario             #+#    #+#             */
-/*   Updated: 2026/08/19 12:01:07 by mario            ###   ########.fr       */
+/*   Updated: 2026/08/27 17:43:36 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int main()
 	{
 		std::cout << "Enter command: ";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			return (0);
 		if (input == "ADD")
 		{
 			Contact newcontact;
@@ -31,6 +33,8 @@ int main()
 			{
 				std::cout << "First name:";
 				std::getline(std::cin, input);
+				if (std::cin.eof())
+					return (0);
 			}
 			newcontact.setFirstName(input);
 			input = "";
@@ -38,6 +42,8 @@ int main()
 			{
 				std::cout << "Last name:";
 				std::getline(std::cin, input);
+				if (std::cin.eof())
+					return (0);
 			}
 			newcontact.setLastName(input);
 			input = "";
@@ -45,6 +51,8 @@ int main()
 			{
 				std::cout << "Nickname:";
 				std::getline(std::cin, input);
+				if (std::cin.eof())
+					return (0);
 			}
 			newcontact.setNickname(input);
 			input = "";
@@ -52,6 +60,8 @@ int main()
 			{
 				std::cout << "Phone number:";
 				std::getline(std::cin, input);
+				if (std::cin.eof())
+					return (0);
 			}
 			newcontact.setPhoneNumber(input);
 			input = "";
@@ -59,6 +69,8 @@ int main()
 			{
 				std::cout << "Darkest secret:";
 				std::getline(std::cin, input);
+				if (std::cin.eof())
+					return (0);
 			}
 			newcontact.setDarkestSecret(input);
 			phonebook.addContact(newcontact);
