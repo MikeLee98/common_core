@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/03 15:37:14 by Mario             #+#    #+#             */
-/*   Updated: 2026/09/07 18:58:56 by Mario            ###   ########.fr       */
+/*   Created: 2026/09/08 21:18:34 by Mario             #+#    #+#             */
+/*   Updated: 2026/09/09 00:26:05 by Mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-Zombie* newZombie(std::string name)
+Weapon::Weapon(std::string type)
 {
-	Zombie *zombie = new Zombie(name);
-	return (zombie);
+	this->type = type;
+}
+
+const std::string &Weapon::getType(void) const
+{
+	return (type);
+}
+
+void Weapon::setType(std::string type)
+{
+	this->type = type;
 }

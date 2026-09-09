@@ -6,7 +6,7 @@
 /*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/03 15:22:04 by Mario             #+#    #+#             */
-/*   Updated: 2026/09/03 15:37:04 by Mario            ###   ########.fr       */
+/*   Updated: 2026/09/07 18:58:56 by Mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void randomChump(std::string name)
 {
-    Zombie zombie(name);
-    zombie.announce();
+	Zombie zombie(name);
+	zombie.announce();
 }

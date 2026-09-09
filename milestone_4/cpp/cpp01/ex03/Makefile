@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: Mario <Mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/09/03 17:32:51 by Mario             #+#    #+#              #
-#    Updated: 2026/09/08 21:08:46 by Mario            ###   ########.fr        #
+#    Created: 2026/09/08 21:16:21 by Mario             #+#    #+#              #
+#    Updated: 2026/09/09 01:21:33 by Mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex03
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
-OBJ = main.o newZombie.o randomChump.o Zombie.o
+SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+OBJ = main.o HumanA.o HumanB.o Weapon.o
 
 all: $(NAME)
 

@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/03 15:37:14 by Mario             #+#    #+#             */
-/*   Updated: 2026/09/07 18:58:56 by Mario            ###   ########.fr       */
+/*   Created: 2026/08/25 14:38:50 by marioro2          #+#    #+#             */
+/*   Updated: 2026/09/07 18:06:49 by Mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 
-Zombie* newZombie(std::string name)
+#include <string>
+
+class Zombie
 {
-	Zombie *zombie = new Zombie(name);
-	return (zombie);
-}
+	private:
+		std::string name;
+
+	public:
+		Zombie();
+		~Zombie();
+		void announce(void);
+		void setName(std::string name);
+};
+
+#endif
