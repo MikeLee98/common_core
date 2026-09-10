@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 18:57:59 by mario             #+#    #+#             */
-/*   Updated: 2026/08/27 17:36:45 by marioro2         ###   ########.fr       */
+/*   Updated: 2026/09/10 16:21:07 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,30 @@ std::string	truncateField(std::string const &field)
 	return (field);
 }
 
+std::string	cleanField(std::string const &field)
+{
+	std::string	cleaned;
+	size_t		i;
+
+	i = 0;
+	while (i < field.length())
+	{
+		if (std::isprint(static_cast<unsigned char>(field[i])))
+			cleaned += field[i];
+		else
+			cleaned += ' ';
+		i++;
+	}
+	return (cleaned);
+}
+
 void	printRow(std::string const &c1, std::string const &c2, std::string const &c3, std::string const &c4)
 {
 	std::cout << std::right;
-	std::cout << std::setw(10) << truncateField(c1) << "|";
-	std::cout << std::setw(10) << truncateField(c2) << "|";
-	std::cout << std::setw(10) << truncateField(c3) << "|";
-	std::cout << std::setw(10) << truncateField(c4) << std::endl;
+	std::cout << std::setw(10) << truncateField(cleanField(c1)) << "|";
+	std::cout << std::setw(10) << truncateField(cleanField(c2)) << "|";
+	std::cout << std::setw(10) << truncateField(cleanField(c3)) << "|";
+	std::cout << std::setw(10) << truncateField(cleanField(c4)) << std::endl;
 }
 
 void	PhoneBook::searchContacts()
