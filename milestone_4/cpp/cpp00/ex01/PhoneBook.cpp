@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 18:57:59 by mario             #+#    #+#             */
-/*   Updated: 2026/09/10 16:21:07 by marioro2         ###   ########.fr       */
+/*   Updated: 2026/09/11 17:34:01 by Mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	PhoneBook::searchContacts()
 	std::cout << "Enter the index of the contact to display: ";
 	std::getline(std::cin, line);
 	std::istringstream iss(line);
-	
 	if (!(iss >> inputnbr))
 		std::cout << "Not a valid number" << std::endl;
 	else
@@ -100,5 +99,3 @@ void	PhoneBook::addContact(Contact const &c)
 	if (totalContacts < 8)
 		totalContacts++;
 }
-
-
