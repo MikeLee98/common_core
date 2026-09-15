@@ -6,11 +6,11 @@
 #    By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/14 17:36:06 by marioro2          #+#    #+#              #
-#    Updated: 2026/09/15 13:39:57 by marioro2         ###   ########.fr        #
+#    Updated: 2026/09/15 15:29:29 by marioro2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex05
+NAME = harlFilter
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf

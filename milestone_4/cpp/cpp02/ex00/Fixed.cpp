@@ -1,31 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/06 14:49:08 by Mario             #+#    #+#             */
-/*   Updated: 2026/09/15 14:19:22 by marioro2         ###   ########.fr       */
+/*   Created: 2026/09/15 14:13:19 by marioro2          #+#    #+#             */
+/*   Updated: 2026/09/15 14:13:29 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
 
-Zombie* zombieHorde(int N, std::string name);
-
-int main(void)
-{
-	Zombie *horde;
-	int i;
-
-	horde = zombieHorde(5, "Bob");
-	i = 0;
-	while (i < 5)
-	{
-		horde[i].announce();
-		i++;
-	}
-	delete[] horde;
-	return (0);
-}

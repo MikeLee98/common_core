@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 19:01:04 by Mario             #+#    #+#             */
-/*   Updated: 2026/09/08 21:06:38 by Mario            ###   ########.fr       */
+/*   Updated: 2026/09/15 15:24:27 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ int main(void)
 	std::cout << "Address of str: " << &str << std::endl;
 	std::cout << "Address of stringPTR: " << stringPTR << std::endl;
 	std::cout << "Address of stringREF: " << &stringREF << std::endl;
+
+	std::cout << "Value of str: " << str << std::endl;
+	std::cout << "Value pointed to by stringPTR: " << *stringPTR << std::endl;
+	std::cout << "Value pointed to by stringREF: " << stringREF << std::endl;
 
 	return (0);
 }
