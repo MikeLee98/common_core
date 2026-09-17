@@ -6,11 +6,11 @@
 #    By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/15 14:11:15 by marioro2          #+#    #+#              #
-#    Updated: 2026/09/17 15:42:30 by marioro2         ###   ########.fr        #
+#    Updated: 2026/09/17 16:45:59 by marioro2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex01
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
