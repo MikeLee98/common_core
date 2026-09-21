@@ -6,7 +6,7 @@
 /*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 14:13:19 by marioro2          #+#    #+#             */
-/*   Updated: 2026/09/18 21:25:04 by Mario            ###   ########.fr       */
+/*   Updated: 2026/09/21 20:51:51 by Mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,50 @@ Fixed &Fixed::operator--(void)
 {
 	_value--;
 	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed old(*this);
+
+	_value++;
+	return (old);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed old(*this);
+
+	_value--;
+	return (old);
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }
 
 std::ostream &operator<<(std::ostream &o, const Fixed &fixed)
