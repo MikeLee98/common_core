@@ -6,13 +6,87 @@
 /*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 14:13:19 by marioro2          #+#    #+#             */
-/*   Updated: 2026/09/18 15:39:21 by Mario            ###   ########.fr       */
+/*   Updated: 2026/09/18 21:25:04 by Mario            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+
+bool Fixed::operator>(const Fixed &other) const
+{
+	return (_value > other._value);
+}
+
+bool Fixed::operator<(const Fixed &other) const
+{
+	return (_value < other._value);
+}
+
+bool Fixed::operator>=(const Fixed &other) const
+{
+	return (_value >= other._value);
+}
+
+bool Fixed::operator<=(const Fixed &other) const
+{
+	return (_value <= other._value);
+}
+
+bool Fixed::operator==(const Fixed &other) const
+{
+	return (_value == other._value);
+}
+
+bool Fixed::operator!=(const Fixed &other) const
+{
+	return (_value != other._value);
+}
+
+Fixed Fixed::operator+(const Fixed &other) const
+{
+	Fixed result;
+
+	result.setRawBits(_value + other._value);
+	return (result);
+}
+
+Fixed Fixed::operator-(const Fixed &other) const
+{
+	Fixed result;
+
+	result.setRawBits(_value - other._value);
+	return (result);
+}
+
+Fixed Fixed::operator*(const Fixed &other) const
+{
+	Fixed result;
+
+	result.setRawBits((_value * other._value) >> _fractionalBits);
+	return (result);
+}
+
+Fixed Fixed::operator/(const Fixed &other) const
+{
+	Fixed result;
+
+	result.setRawBits((_value / other._value) << _fractionalBits);
+	return (result);
+}
+
+Fixed &Fixed::operator++(void)
+{
+	_value++;
+	return (*this);
+}
+
+Fixed &Fixed::operator--(void)
+{
+	_value--;
+	return (*this);
+}
 
 std::ostream &operator<<(std::ostream &o, const Fixed &fixed)
 {
