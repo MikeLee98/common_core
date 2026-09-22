@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 14:13:19 by marioro2          #+#    #+#             */
-/*   Updated: 2026/09/18 15:39:21 by Mario            ###   ########.fr       */
+/*   Updated: 2026/09/22 16:27:41 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
+#include <climits>
 
 std::ostream &operator<<(std::ostream &o, const Fixed &fixed)
 {
@@ -31,8 +32,8 @@ int Fixed::toInt(void) const
 
 Fixed::Fixed(float const value)
 {
-	std::cout << "Float constructor called" << std::endl;
-	_value = roundf(value * (1 << _fractionalBits));
+    std::cout << "Float constructor called" << std::endl;
+    _value = roundf(value * (1 << _fractionalBits));
 }
 
 Fixed::Fixed(int const value)
@@ -67,12 +68,10 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (_value);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
 	_value = raw;
 }

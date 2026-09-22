@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 14:13:19 by marioro2          #+#    #+#             */
-/*   Updated: 2026/09/21 20:55:54 by Mario            ###   ########.fr       */
+/*   Updated: 2026/09/22 17:26:31 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ Fixed Fixed::operator*(const Fixed &other) const
 
 Fixed Fixed::operator/(const Fixed &other) const
 {
-	Fixed result;
+    Fixed result;
 
-	result.setRawBits((_value / other._value) << _fractionalBits);
-	return (result);
+    result.setRawBits((_value << _fractionalBits) / other._value);
+    return (result);
 }
 
 Fixed &Fixed::operator++(void)

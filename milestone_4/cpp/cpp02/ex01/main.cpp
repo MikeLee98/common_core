@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 14:12:49 by marioro2          #+#    #+#             */
-/*   Updated: 2026/09/18 15:46:39 by Mario            ###   ########.fr       */
+/*   Updated: 2026/09/22 14:51:12 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 int main(void)
 {
 	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
+	Fixed const b(10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
 
-	a = Fixed( 1234.4321f );
+	a = Fixed(1234.4321f);
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;

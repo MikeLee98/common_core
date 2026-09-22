@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Mario <Mario@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/15 14:13:02 by marioro2          #+#    #+#             */
-/*   Updated: 2026/09/18 15:26:38 by Mario            ###   ########.fr       */
+/*   Updated: 2026/09/22 14:30:32 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Fixed
 	public:
 		Fixed();
 		Fixed(const Fixed& other);
-		Fixed &operator=(const Fixed &other); // This is an operator overload, we are teaching C++ how to behave when we use the operator = on a Fixed object
+		Fixed &operator=(const Fixed &other); // This is an operator overload, we are teaching our program how to behave when we use the operator = on a Fixed object
 		~Fixed();
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
