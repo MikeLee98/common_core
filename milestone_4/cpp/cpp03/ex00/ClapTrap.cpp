@@ -10,4 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ClapTrap.hpp"
+#include <iostream>
 
+ClapTrap::ClapTrap(std::string name) : name(name)
+{
+	std::cout << "Constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = other;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	_name = other._name;
+	return (*this);
+}
+
+ClapTrap::~ClapTrap()
+{
+	std::cout << "Destructor called" << std::endl;
+}
