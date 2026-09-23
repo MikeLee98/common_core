@@ -6,7 +6,7 @@
 #    By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/21 16:35:44 by marioro2          #+#    #+#              #
-#    Updated: 2026/09/21 16:36:26 by marioro2         ###   ########.fr        #
+#    Updated: 2026/09/23 17:29:06 by marioro2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRC = main.cpp Fixed.cpp
-OBJ = main.o Fixed.o
+SRC = main.cpp ClapTrap.cpp
+OBJ = main.o ClapTrap.o
 
 all: $(NAME)
 
