@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Mario <Mario@student.42.fr>                +#+  +:+       +#+         #
+#    By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/21 16:35:44 by marioro2          #+#    #+#              #
-#    Updated: 2026/09/23 19:20:15 by Mario            ###   ########.fr        #
+#    Updated: 2026/09/24 15:06:57 by marioro2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRC = main.cpp ClapTrap.cpp
-OBJ = main.o ClapTrap.o
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+OBJ = main.o ClapTrap.o ScavTrap.o
 
 all: $(NAME)
 

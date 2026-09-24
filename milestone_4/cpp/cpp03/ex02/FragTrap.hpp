@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/23 17:26:57 by marioro2          #+#    #+#             */
-/*   Updated: 2026/09/24 16:53:35 by marioro2         ###   ########.fr       */
+/*   Created: 2026/09/24 15:08:58 by marioro2          #+#    #+#             */
+/*   Updated: 2026/09/24 16:36:46 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
+
 #include "ClapTrap.hpp"
 
-int main()
+class FragTrap : public ClapTrap
 {
-    ClapTrap a;
-    ClapTrap b("Brad");
+	public:
+		FragTrap();
+		FragTrap(std::string name);
+		FragTrap(const FragTrap &other);
+		FragTrap &operator=(const FragTrap &other);
+		~FragTrap();
 
-    a.attack("Brad");
-    a.takeDamage(3);
-    b.attack("ClapTrap");
-    a.beRepaired(2);
-    b.takeDamage(5);
-    b.beRepaired(4);
-    return (0);
-}
+		void highFivesGuys(void);
+};
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:22:48 by Mario             #+#    #+#             */
-/*   Updated: 2026/09/24 14:34:57 by marioro2         ###   ########.fr       */
+/*   Updated: 2026/09/24 16:38:13 by marioro2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,10 @@ void ScavTrap::attack(const std::string &target)
 
 void ScavTrap::guardGate()
 {
+	if (_hitPoints == 0 || _energyPoints == 0)
+	{
+		std::cout << "ScavTrap " << _name << " is incapacitated!" << std::endl;
+		return ;
+	}
 	std::cout << "ScavTrap " << _name << " is now in Gate keeper mode!" << std::endl;
 }
