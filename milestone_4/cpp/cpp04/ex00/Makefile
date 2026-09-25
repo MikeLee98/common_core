@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marioro2 <marioro2@student.42.fr>          +#+  +:+       +#+         #
+#    By: Mario <Mario@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/21 16:35:44 by marioro2          #+#    #+#              #
-#    Updated: 2026/09/24 17:11:02 by marioro2         ###   ########.fr        #
+#    Updated: 2026/09/25 19:40:46 by Mario            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRC = main.cpp
-OBJ = main.o
+SRC = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
+OBJ = main.o Cat.o Dog.o Animal.o WrongAnimal.o WrongCat.o
 
 all: $(NAME)
 
